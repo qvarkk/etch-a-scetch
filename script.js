@@ -175,3 +175,13 @@ sizeButton.addEventListener('click', () => {
     checkForInput(inputedSize);
 });
 
+const clearButton = document.getElementById('clear');
+clearButton.addEventListener('click', () => {
+    allTiles = document.querySelectorAll('.tile');
+        allTiles.forEach((tile) => {
+            canvas.removeChild(tile);
+        });
+    createNewCanvas(Math.sqrt(allTiles.length));
+    currColor = 'black';
+    colorPara.innerHTML = 'Current color: black';
+});
