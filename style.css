@@ -58,6 +58,28 @@ body {
     border: 1px solid black;
 }
 
+.clear {
+    font-family: 'Koulen', cursive;
+    padding: 5px;
+    font-size: 45px;
+    line-height: .9em;
+    background-color: purple;
+    color: pink;
+    border-radius: 20%;
+    border: 5px solid pink;
+    margin-bottom: 25px;
+    transition: background-color .3s, color .3s, opacity .2s;
+}
+
+.clear:hover {
+    background-color: pink;
+    color: purple;
+}
+
+.clear:active {
+    opacity: .7;
+}
+
 #change-size {
     font-family: 'Koulen', cursive;
     padding: 5px;
