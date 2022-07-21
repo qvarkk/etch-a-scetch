@@ -1,3 +1,5 @@
+// I'M GETTING LOST IN THIS CODE. But now I know that code has to be well formated!
+
 const colorPara = document.getElementById('curr-color');
 const colorButtons = document.querySelectorAll('.color-button');
 let currColor = 'black';
@@ -13,22 +15,45 @@ colorButtons.forEach(button => {
     if (button.classList[1] !== 'rgb' && button.classList[1] !== 'opacity') {
         button.addEventListener('click', () => {
             currColor = button.classList[1];
+            if (currColor !== 'greenyellow') {
+                colorPara.innerHTML = 'Current color: ' + currColor;
+            } else {
+                colorPara.innerHTML = 'Current color: salad';
+            }
             // Updating a node list of all tiles to make them responsible on click
             allTiles = document.querySelectorAll('.tile');
             allTiles.forEach((tile) => {
                 tile.addEventListener('mouseover', () => {
-                tile.style.backgroundColor = currColor;
+                    tile.style.backgroundColor = currColor;
                 })
             });
         });
     } else if (button.classList[1] === 'rgb') {
         button.addEventListener('click', () => {
+            colorPara.innerHTML = 'Current color: rainbow+';
             allTiles = document.querySelectorAll('.tile');
             allTiles.forEach((tile) => {
                 tile.addEventListener('mouseover', () => {
-                tile.style.backgroundColor = selectRandomColor();
+                    tile.style.backgroundColor = selectRandomColor();
                 })
             });
+        });
+    } else if (button.classList[1] === 'opacity') {
+        button.addEventListener('click', () => {
+            let will = confirm('Selecting this color will delete your existing picture, proceed?');
+            if (will === true) {
+                let sizing = prompt('Enter new size you want to see (min 5, max 100)');
+                checkForInputOpacity(sizing);
+                allTiles = document.querySelectorAll('.tile');
+                allTiles.forEach((tile) => {
+                    tile.style.opacity = '1';
+                    tile.addEventListener('mouseover', () => {
+                        tile.style.opacity = (parseFloat(tile.style.opacity) - 0.1).toString();
+                })
+            });
+            } else {
+                return;
+            } 
         });
     }
 });
@@ -65,6 +90,23 @@ let createNewCanvas  = (gridSize) => {
         tile.addEventListener('mouseover', () => {
             tile.style.backgroundColor = currColor;
         })
+    });
+}
+
+let createNewCanvasOpacity  = (gridSize) => {
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        tileSize = (720 / gridSize) - 2;
+        canvas.appendChild(tile.cloneNode(true));
+        r.style.setProperty('--size', tileSize.toString() + 'px');
+    }
+    // To toggle borders on
+    bordersToggles[0].checked = true;
+    colorPara.innerHTML = 'Current color: -opacity';
+
+    // Creating a node list of all tiles to make them responsible on click
+    allTiles = document.querySelectorAll('.tile');
+    allTiles.forEach((tile) => {
+        tile.style.backgroundColor = 'black';
     });
 }
 
@@ -105,6 +147,23 @@ let checkForInput = (inputSize) => {
         alert('Wrong input value, try again!');
         inputSize = prompt('Enter canvas size you want to draw on (min 5, max 100)');
         checkForInput(inputSize);
+    }
+};
+
+let checkForInputOpacity = (inputSize) => {
+    if (5 <= inputSize && inputSize <= 100) {
+        allTiles = document.querySelectorAll('.tile');
+        allTiles.forEach((tile) => {
+            canvas.removeChild(tile);
+        });
+        createNewCanvasOpacity(inputSize);
+    } else if (inputSize === null) { // in case if user tries to close the prompt
+        return;
+    } else {
+        console.log(inputSize);
+        alert('Wrong input value, try again!');
+        inputSize = prompt('Enter canvas size you want to draw on (min 5, max 100)');
+        checkForInputOpacity(inputSize);
     }
 };
 
