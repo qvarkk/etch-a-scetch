@@ -1,12 +1,36 @@
+const colorPara = document.getElementById('curr-color');
 const colorButtons = document.querySelectorAll('.color-button');
 let currColor = 'black';
 
+const colors = ['red', 'green', 'blue', 'white', 'black', 'gray', 'red', 'green', 'greenyellow', 'blue', 'aqua', 'orange', 'yellow', 'purple', 'pink', 'salmon', 'brown'];
+
+const selectRandomColor = () => {
+    let index = Math.floor(Math.random() * 14);
+    return colors[index];
+};
+
 colorButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        if (button.classList[1] !== 'rgb' || button.classList[1] !== 'opacity') {
+    if (button.classList[1] !== 'rgb' && button.classList[1] !== 'opacity') {
+        button.addEventListener('click', () => {
             currColor = button.classList[1];
-        }
-    });
+            // Updating a node list of all tiles to make them responsible on click
+            allTiles = document.querySelectorAll('.tile');
+            allTiles.forEach((tile) => {
+                tile.addEventListener('mouseover', () => {
+                tile.style.backgroundColor = currColor;
+                })
+            });
+        });
+    } else if (button.classList[1] === 'rgb') {
+        button.addEventListener('click', () => {
+            allTiles = document.querySelectorAll('.tile');
+            allTiles.forEach((tile) => {
+                tile.addEventListener('mouseover', () => {
+                tile.style.backgroundColor = selectRandomColor();
+                })
+            });
+        });
+    }
 });
 
 // console.log(colorButtons[0].classList[1])
@@ -38,7 +62,7 @@ let createNewCanvas  = (gridSize) => {
     // Creating a node list of all tiles to make them responsible on click
     allTiles = document.querySelectorAll('.tile');
     allTiles.forEach((tile) => {
-        tile.addEventListener('click', () => {
+        tile.addEventListener('mouseover', () => {
             tile.style.backgroundColor = currColor;
         })
     });
@@ -66,8 +90,6 @@ bordersToggles[1].addEventListener('click', transBorders);
 // To create canvas on page load
 createNewCanvas(16);
 
-
-
 // If input after clicking "change size" button is wrong, it won't create new canvas
 let checkForInput = (inputSize) => {
     if (5 <= inputSize && inputSize <= 100) {
@@ -81,7 +103,7 @@ let checkForInput = (inputSize) => {
     } else {
         console.log(inputSize);
         alert('Wrong input value, try again!');
-        inputSize = prompt('Enter new size you want to see (min 5, max 100)');
+        inputSize = prompt('Enter canvas size you want to draw on (min 5, max 100)');
         checkForInput(inputSize);
     }
 };
@@ -90,7 +112,7 @@ let checkForInput = (inputSize) => {
 let inputedSize;
 const sizeButton = document.getElementById('change-size');
 sizeButton.addEventListener('click', () => {
-    inputedSize = prompt('Enter new size you want to see (min 10, max 100)');
+    inputedSize = prompt('Enter new size you want to see (min 5, max 100)');
     checkForInput(inputedSize);
 });
 
