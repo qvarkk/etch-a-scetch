@@ -1,3 +1,16 @@
+const colorButtons = document.querySelectorAll('.color-button');
+let currColor = 'black';
+
+colorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (button.classList[1] !== 'rgb' || button.classList[1] !== 'opacity') {
+            currColor = button.classList[1];
+        }
+    });
+});
+
+// console.log(colorButtons[0].classList[1])
+
 // Storing css variables in rs variable
 const r = document.querySelector(':root');
 const rs = getComputedStyle(r);
@@ -26,10 +39,7 @@ let createNewCanvas  = (gridSize) => {
     allTiles = document.querySelectorAll('.tile');
     allTiles.forEach((tile) => {
         tile.addEventListener('click', () => {
-            tile.style.backgroundColor = 'black';
-        })
-        tile.addEventListener('dblclick', () => {
-            tile.style.backgroundColor = 'white';
+            tile.style.backgroundColor = currColor;
         })
     });
 }
