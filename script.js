@@ -2,6 +2,9 @@
 const r = document.querySelector(':root');
 const rs = getComputedStyle(r);
 
+// To make it toggled on every canvas creation
+const bordersToggles = document.getElementsByName('border');
+
 // Creates tile node and adds classes to it
 const tile = document.createElement('div');
 tile.classList.add('tile', 'tile-borders');
@@ -16,6 +19,8 @@ let createNewCanvas  = (gridSize) => {
         canvas.appendChild(tile.cloneNode(true));
         r.style.setProperty('--size', tileSize.toString() + 'px');
     }
+    // To toggle borders on
+    bordersToggles[0].checked = true;
 
     // Creating a node list of all tiles to make them responsible on click
     allTiles = document.querySelectorAll('.tile');
@@ -28,6 +33,26 @@ let createNewCanvas  = (gridSize) => {
         })
     });
 }
+
+// Functions to switch borders
+
+const blackBorders = () => {
+    allTiles = document.querySelectorAll('.tile');
+    allTiles.forEach((tile) => {
+        tile.classList.add('tile-borders');
+    });
+};
+const transBorders = () => {
+    allTiles = document.querySelectorAll('.tile');
+    allTiles.forEach((tile) => {
+        tile.classList.remove('tile-borders');
+    });
+};
+
+// Assigning 
+bordersToggles[0].addEventListener('click', blackBorders);
+bordersToggles[1].addEventListener('click', transBorders);
+
 // To create canvas on page load
 createNewCanvas(16);
 
@@ -51,10 +76,11 @@ let checkForInput = (inputSize) => {
     }
 };
 
-// 
+// Creates event for change size button
 let inputedSize;
 const sizeButton = document.getElementById('change-size');
 sizeButton.addEventListener('click', () => {
     inputedSize = prompt('Enter new size you want to see (min 10, max 100)');
     checkForInput(inputedSize);
 });
+
