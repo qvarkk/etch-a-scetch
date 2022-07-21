@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 :root {
     --size: 75px;
 }
@@ -28,6 +30,9 @@ body {
     width: 300px;
     height: 850px;
     background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .canvas {
@@ -50,4 +55,25 @@ body {
 
 .tile-borders {
     border: 1px solid black;
+}
+
+#change-size {
+    font-family: 'Koulen', cursive;
+    padding: 5px;
+    font-size: 45px;
+    line-height: .9em;
+    background-color: purple;
+    color: pink;
+    border-radius: 20%;
+    border: 5px solid pink;
+    transition: background-color .3s, color .3s, opacity .2s;
+}
+
+#change-size:hover {
+    background-color: pink;
+    color: purple;
+}
+
+#change-size:active {
+    opacity: .7;
 }
