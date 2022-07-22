@@ -1,4 +1,4 @@
-// I'M GETTING LOST IN THIS CODE. But now I know that code has to be well formated!
+// I'M GETTING LOST IN THIS CODE. This will be a lesson for me: keep everything clean
 
 const colorPara = document.getElementById('curr-color');
 const colorButtons = document.querySelectorAll('.color-button');
@@ -20,10 +20,10 @@ colorButtons.forEach(button => {
             } else {
                 colorPara.innerHTML = 'Current color: salad';
             }
-            // Updating a node list of all tiles to make them responsible on click
+            // Updating a node list of all tiles to make them responsible on mouseover
             allTiles = document.querySelectorAll('.tile');
             allTiles.forEach((tile) => {
-                tile.addEventListener('mouseover', () => {
+                tile.addEventListener('click', () => {
                     tile.style.backgroundColor = currColor;
                 })
             });
@@ -33,7 +33,7 @@ colorButtons.forEach(button => {
             colorPara.innerHTML = 'Current color: rainbow+';
             allTiles = document.querySelectorAll('.tile');
             allTiles.forEach((tile) => {
-                tile.addEventListener('mouseover', () => {
+                tile.addEventListener('click', () => {
                     tile.style.backgroundColor = selectRandomColor();
                 })
             });
@@ -57,8 +57,6 @@ colorButtons.forEach(button => {
         });
     }
 });
-
-// console.log(colorButtons[0].classList[1])
 
 // Storing css variables in rs variable
 const r = document.querySelector(':root');
@@ -84,10 +82,10 @@ let createNewCanvas  = (gridSize) => {
     // To toggle borders on
     bordersToggles[0].checked = true;
 
-    // Creating a node list of all tiles to make them responsible on click
+    // Creating a node list of all tiles to make them responsible on mouseover
     allTiles = document.querySelectorAll('.tile');
     allTiles.forEach((tile) => {
-        tile.addEventListener('mouseover', () => {
+        tile.addEventListener('click', () => {
             tile.style.backgroundColor = currColor;
         })
     });
@@ -103,7 +101,7 @@ let createNewCanvasOpacity  = (gridSize) => {
     bordersToggles[0].checked = true;
     colorPara.innerHTML = 'Current color: -opacity';
 
-    // Creating a node list of all tiles to make them responsible on click
+    // Creating a node list of all tiles to make them responsible on mouseover
     allTiles = document.querySelectorAll('.tile');
     allTiles.forEach((tile) => {
         tile.style.backgroundColor = 'black';
@@ -111,7 +109,6 @@ let createNewCanvasOpacity  = (gridSize) => {
 }
 
 // Functions to switch borders
-
 const blackBorders = () => {
     allTiles = document.querySelectorAll('.tile');
     allTiles.forEach((tile) => {
@@ -132,7 +129,7 @@ bordersToggles[1].addEventListener('click', transBorders);
 // To create canvas on page load
 createNewCanvas(16);
 
-// If input after clicking "change size" button is wrong, it won't create new canvas
+// If input after mouseovering "change size" button is wrong, it won't create new canvas
 let checkForInput = (inputSize) => {
     if (5 <= inputSize && inputSize <= 100) {
         allTiles = document.querySelectorAll('.tile');
