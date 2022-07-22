@@ -12,50 +12,60 @@
     <header class="header">
         <div class="container">
             <div class="pallete">
-                <button id="clear" class="clear">Clear canvas</button>
-                <button id="change-size">CHANGE<br>SIZE</button>
-                <div class="border-toggle-container">
-                    <p>Borders:</p>
-                    <div class="togglers">
-                        <div>
-                            <input type="radio" name="border" id="toggle-black" checked="checked">
-                            <label for="toggle-black" class="label">ON</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="border" id="toggle-trans">
-                            <label for="toggle-trans" class="label">OFF</label>
-                        </div>
-                    </div>
+                <div class="buttons">
+                    <button id="clear" class="clear">Clear canvas</button>
+                    <button id="change-size">Change size</button>
                 </div>
-                <div class="colors">
-                    <p>Colors:</p>
-                    <div class="color-grid">
-                        <button class="color-button black"></button>
-                        <button class="color-button gray"></button>
-                        <button class="color-button white"></button>
-                        <button class="color-button red"></button>
-                        <button class="color-button green"></button>
-                        <button class="color-button greenyellow"></button>
-                        <button class="color-button blue"></button>
-                        <button class="color-button aqua"></button>
-                        <button class="color-button orange"></button>
-                        <button class="color-button yellow"></button>
-                        <button class="color-button purple"></button>
-                        <button class="color-button pink"></button>
-                        <button class="color-button salmon"></button>
-                        <button class="color-button brown"></button>
-                        <button class="color-button rgb"></button>
-                        <button class="color-button opacity">!!!</button>
+                <div class="down-part">
+                    <div class="border-toggle-container">
+                        <p>Borders:</p>
+                        <div class="togglers">
+                            <div>
+                                <input type="radio" name="border" id="toggle-black" checked="checked">
+                                <label for="toggle-black" class="label">ON</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="border" id="toggle-trans">
+                                <label for="toggle-trans" class="label">OFF</label>
+                            </div>
+                        </div>
                     </div>
-                    <p id="curr-color">Current color: black</p>
+                    <div class="colors">
+                        <p>Colors:</p>
+                        <div class="color-grid">
+                            <button class="color-button black"></button>
+                            <button class="color-button gray"></button>
+                            <button class="color-button white"></button>
+                            <button class="color-button red"></button>
+                            <button class="color-button green"></button>
+                            <button class="color-button greenyellow"></button>
+                            <button class="color-button blue"></button>
+                            <button class="color-button aqua"></button>
+                            <button class="color-button orange"></button>
+                            <button class="color-button yellow"></button>
+                            <button class="color-button purple"></button>
+                            <button class="color-button pink"></button>
+                            <button class="color-button salmon"></button>
+                            <button class="color-button brown"></button>
+                            <button class="color-button rgb"></button>
+                            <button class="color-button opacity">!!!</button>
+                        </div>
+                        <p id="curr-color">Current color: black</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="canvas" id="canvas">
-                
+                <!-- Filled with JS -->
             </div>
         </div>
     </header>
+    <footer class="footer">
+        <div class="absolute">
+            <a href="https://t.me/qvarkk" class="link">Contact author</a> <br>&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;&HorizontalLine;<br> 
+            <a href="https://github.com/qvarkk/etch-a-scetch" class="link">Github repository</a>
+        </div>
+    </footer>
 </body>
 </html>
